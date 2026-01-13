@@ -114,3 +114,11 @@ O projeto é equilibrado:
 - SQL (MySQL, PostgreSQL ou similar)
 - HTML
 - CSS
+
+---
+
+## 📊 UML
+
+<img width="931" height="496" alt="Captura de tela 2026-01-13 201936" src="https://github.com/user-attachments/assets/f51296d6-d813-4244-bb43-f810febf632d" />
+
+<img width="900" height="653" alt="Captura de tela 2026-01-13 201941" src="https://github.com/user-attachments/assets/dc295b61-08b8-4ea6-8e50-8857c37b3e80" />
