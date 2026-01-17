@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "products")
 @Getter
@@ -24,7 +26,7 @@ public class Product {
     private String descricao;
 
     @Column(nullable = false)
-    private Double price;
+    private BigDecimal price;
 
     @Enumerated(EnumType.STRING)
     private ProductType type;

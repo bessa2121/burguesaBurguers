@@ -6,11 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "Order")
+@Table(name = "Orders")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,10 +22,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<ItemOrder> itens;
 
-    private Double totalAmount;
+    private BigDecimal totalAmount;
 
     private LocalDateTime orderDate = LocalDateTime.now();
 }

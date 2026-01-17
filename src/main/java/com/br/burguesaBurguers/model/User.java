@@ -21,7 +21,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @JdbcTypeCode(SqlTypes.CHAR)
-    @Column(length = 36, nullable = false)
+    @Column(name = "id", length = 36, nullable = false)
     private UUID id;
 
     @Column(name = "name")
