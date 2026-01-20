@@ -10,10 +10,8 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "items")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class ItemOrder {
 
     @Id
@@ -30,5 +28,6 @@ public class ItemOrder {
 
     private int quantity;
 
+    @Column(name = "unit_price")
     private BigDecimal unitPrice;
 }

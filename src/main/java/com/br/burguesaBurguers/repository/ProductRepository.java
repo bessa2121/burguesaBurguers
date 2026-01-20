@@ -1,14 +1,12 @@
 package com.br.burguesaBurguers.repository;
 
 import com.br.burguesaBurguers.model.Product;
-import com.br.burguesaBurguers.model.ProductType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product,Long> {
-    List<Product> findByType(ProductType type);
-    List<Product> findByNameContainingIgnoreCase(String name);
+    Optional<Product> findById(Long id);
 }

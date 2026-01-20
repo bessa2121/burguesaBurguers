@@ -11,11 +11,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "Orders")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "orders")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class Order {
 
     @Id
@@ -25,7 +23,10 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<ItemOrder> itens;
 
+    @Column(name = "total_amount")
     private BigDecimal totalAmount;
 
+    @Column(name = "order_date")
     private LocalDateTime orderDate = LocalDateTime.now();
+
 }
