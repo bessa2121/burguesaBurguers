@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/cadastro.css}">
+</head>
+<body>
+
+<!-- Página de cadastro -->
+<header class="top-menu">
+    <img th:src="@{/img/logo.png}" alt="logo" class="logo">
+
+    <nav class="links">
+        <a th:href="@{/}">MENU</a>
+        <a th:href="@{/cardapio}">CARDÁPIO</a>
+        <a th:href="@{/entrega}">ENTREGA</a>
+        <a th:href="@{/avaliacao}">AVALIAÇÃO</a>
+    </nav>
+
+    <a th:href="@{/login}" class="login-btn">Login</a>
+</header>
+
+<div class="container-cadastro">
+    <form class="Formulario"
+          th:action="@{/cadastro}"
+          th:object="${user}"
+          method="post">
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{name}" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required><br><br>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" th:field="*{password}" required><br><br>
+
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" th:field="*{cep}" required><br><br>
+
+        <input type="submit" value="Registrar">
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2023 Burguesa Burguers. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>

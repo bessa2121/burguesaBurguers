@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - Burguesa Burguers</title>
+    <link rel="stylesheet" href="../css/cardapio.css">
+</head>
+<body>
+    <header class="top-menu">
+        <img src="../img/logo.png" alt="logo" class="logo">
+        <nav class="links">
+            <a href="index.html">MENU</a>
+            <a href="cardapio.html">CARDAPIO</a>
+            <a href="entrega.html">ENTREGA</a>
+            <a href="avaliação.html">AVALIAÇÃO</a>
+        </nav>
+        <a href="login.html" class="login-btn">Login</a>
+    </header>
+
+    <!-- Visualização Principal do Cardápio -->
+    <div id="cardapioView" class="cardapio-container">
+        <div class="produtos-grid">
+            <div class="produto-card" onclick="mostrarOpcoes('hamburguers')">
+                <img src="../img/burguers.png" alt="Hambúrgueres" class="produto-img">
+                <h3>HAMBÚRGUERES</h3>
+                <p>Conheça nossa variedade de hambúrgueres artesanais</p>
+            </div>
+
+            <div class="produto-card" onclick="mostrarOpcoes('bebidas')">
+                <img src="../img/bebidas.png" alt="Bebidas" class="produto-img">
+                <h3>BEBIDAS</h3>
+                <p>Explore nossas bebidas refrescantes</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visualização de Opções (Hambúrgueres/Bebidas) -->
+    <div id="opcoesView" class="opcoes-container" style="display: none;">
+        <div class="opcoes-header">
+            <button class="voltar-btn" onclick="voltarCardapio()">← Voltar</button>
+            <h2 id="opcoesTitle">HAMBÚRGUERES</h2>
+        </div>
+        
+        <div class="opcoes-grid" id="opcoesGrid">
+            <!-- As opções serão adicionadas aqui via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Dados dos produtos
+        const cardapioData = {
+            hamburguers: [
+                { nome: 'Clássico', descricao: 'Hambúrguer tradicional com queijo', imagem: '../img/bacon.png' },
+                { nome: 'Bacon Premium', descricao: 'Hambúrguer com bacon crocante', imagem: '../img/crispy.png' },
+                
+            ],
+            bebidas: [
+                { nome: 'Refrigerante', descricao: 'Refri gelado diversas opções', imagem: '' },
+            ]
+        };
+
+        function mostrarOpcoes(tipo) {
+            const cardapioView = document.getElementById('cardapioView');
+            const opcoesView = document.getElementById('opcoesView');
+            const opcoesTitle = document.getElementById('opcoesTitle');
+            const opcoesGrid = document.getElementById('opcoesGrid');
+
+            // Alternar visualizações
+            cardapioView.style.display = 'none';
+            opcoesView.style.display = 'block';
+
+            // Atualizar título
+            opcoesTitle.textContent = tipo === 'hamburguers' ? 'HAMBÚRGUERES' : 'BEBIDAS';
+
+            // Carregar opções
+            const opcoes = cardapioData[tipo];
+            opcoesGrid.innerHTML = '';
+
+            opcoes.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'opcao-card';
+                card.innerHTML = `
+                    <img src="${item.imagem}" alt="${item.nome}" class="opcao-img">
+                    <h4>${item.nome}</h4>
+                    <p>${item.descricao}</p>
+                    <button class="adicionar-btn">Adicionar ao Carrinho</button>
+                `;
+                opcoesGrid.appendChild(card);
+            });
+        }
+
+        function voltarCardapio() {
+            const cardapioView = document.getElementById('cardapioView');
+            const opcoesView = document.getElementById('opcoesView');
+            cardapioView.style.display = 'block';
+            opcoesView.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
