@@ -51,4 +51,15 @@ public class OrderService {
 
         return orderRepository.save(order);
     }
+
+    public Order deleteOrder(CreateOrderDTO dto) {
+        List<ItemOrder> items = dto.itens()
+                .stream()
+                .map(itemOrderDTO -> {
+                    Product product = productRepository.findById(itemOrderDTO.productId())
+                            .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+
+                }).toList();
+    }
 }
