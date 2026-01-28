@@ -22,4 +22,4 @@
 
 ### Organizar o diretorio docs/ como na imagem a seguir :
 
-![img.png](img.png)
+![img.png](images/img.png)
