@@ -1,4 +1,4 @@
-### Criar HandlerGlobalException para personalizar e tratar exceções
+### Personalizar e tratar exceções da classe HandlerGlobalException
 
 ---
 
