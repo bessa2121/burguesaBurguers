@@ -1,7 +1,9 @@
 package com.br.burguesaBurguers.service;
 
+import com.br.burguesaBurguers.dto.ItemOrderDTO;
 import com.br.burguesaBurguers.dto.UserCreateDTO;
 import com.br.burguesaBurguers.dto.UserResponseDTO;
+import com.br.burguesaBurguers.model.Product;
 import com.br.burguesaBurguers.model.User;
 import com.br.burguesaBurguers.repository.UserRepository;
 import jakarta.validation.constraints.Size;

@@ -1,6 +1,7 @@
 package com.br.burguesaBurguers.service;
 
 import com.br.burguesaBurguers.dto.CreateOrderDTO;
+import com.br.burguesaBurguers.dto.OrderResponseDTO;
 import com.br.burguesaBurguers.model.ItemOrder;
 import com.br.burguesaBurguers.model.Order;
 import com.br.burguesaBurguers.model.Product;
@@ -52,14 +53,34 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public Order deleteOrder(CreateOrderDTO dto) {
-        List<ItemOrder> items = dto.itens()
-                .stream()
-                .map(itemOrderDTO -> {
-                    Product product = productRepository.findById(itemOrderDTO.productId())
-                            .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
-
-
-                }).toList();
+    public Order getOrderById(Long orderId) {
+        return orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
     }
+
+    public Order removeItemFromOrder(Long orderId, Long productId) {
+
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+
+        List<ItemOrder> itens = order.getItens();
+
+        ItemOrder itemToRemove = itens.stream()
+                .filter(item -> item.getProduct().getId().equals(productId))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Item não encontrado no pedido"));
+
+        itens.remove(itemToRemove);
+
+        // Recalcula o total do pedido
+        BigDecimal total = itens.stream()
+                .map(i -> i.getUnitPrice().multiply(BigDecimal.valueOf(i.getQuantity())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        order.setTotalAmount(total);
+
+        return orderRepository.save(order);
+    }
+
+
 }
