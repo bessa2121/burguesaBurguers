@@ -8,7 +8,7 @@ Projeto criado para pratica com intuito de simular uma situação profissional..
 # 🍽️ Sistema de Gestão de Restaurante
 
 ## 📌 Descrição
-Este projeto consiste em um sistema web para controle e gerenciamento de pedidos em um restaurante.  
+Este projeto consiste em um sistema para controle e gerenciamento de pedidos em um restaurante.  
 O sistema permite organizar mesas, pratos e pedidos, automatizando o cálculo da conta e o controle do fluxo de atendimento, desde o pedido até o fechamento da conta.
 
 O objetivo é reduzir erros manuais, melhorar a organização e simular um sistema real utilizado em restaurantes.
